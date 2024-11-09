@@ -10,7 +10,24 @@
 <body>
     <header>
         <h3>LIBRARY</h3>
-        <button>Add New Book</button>
+        <button id="addNewButton">Add New Book</button>
+        <dialog id="addNewBookDialog">
+            <h4>ADD NEW BOOK</h4>
+            <form  action="">
+                <label for="title">TITLE: </label>
+                <input type="text" id="title" name="title" required>
+                <br>
+                <label for="author">AUTHOR: </label>
+                <input type="text" id="author" name="author" required>
+                <br>
+                <label for="pages">NUMBER OF PAGES: </label>
+                <input type="text" id="pages" name="pages" required>
+                <br>
+                <label for="read">READ: </label>
+                <input type="text" id="read" name="read">
+                <button id="add">ADD</button>
+            </form>
+        </dialog>
     </header>
     <main></main> 
 </body>
