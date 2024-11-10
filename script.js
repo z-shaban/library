@@ -8,7 +8,7 @@ const pages = document.querySelector("#pages");
 const read = document.querySelector("#read");
 
 
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -22,17 +22,20 @@ function addBookToLibrary(title, author, pages, read){
 
     myLibrary.push(newBook);
     displayBooks();
+    console.log(myLibrary);
 }
 
 function displayBooks(){
     main.innerHTML = ""
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         const bookCard = document.createElement("div");
         const bookTitle = document.createElement("h3");
         const bookAuthor = document.createElement("p");
         const bookPages = document.createElement("p");
         const bookRead = document.createElement("p");
         const remove = document.createElement("button")
+
+        bookCard.setAttribute("data-index", index);
 
         bookTitle.textContent = book.title;
         bookAuthor.textContent = book.author;
@@ -42,9 +45,17 @@ function displayBooks(){
 
         bookCard.append(bookTitle, bookAuthor, bookPages, bookRead, remove);
         main.appendChild(bookCard);
-
         
+        const myIndex = parseInt(bookCard.getAttribute("data-index"), 10);
+
+        remove.addEventListener("click", ()=>{
+            let newLibrary = myLibrary.filter((book, index) => !index == myIndex);
+            myLibrary = newLibrary;
+            console.log(newLibrary);
+            bookCard.remove();
+        })
     });
+
 };
 
 addNewButton.addEventListener("click", () =>{
@@ -62,6 +73,8 @@ add.addEventListener("click",(e) =>{
     read.value = ""; 
 });
 
+
+
 addBookToLibrary("harry porter", "shaban", "293", "read");
 
-console.log(myLibrary);
+
