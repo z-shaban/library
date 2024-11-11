@@ -9,6 +9,7 @@ const pages = document.querySelector("#pages");
 const read = document.querySelector("#read");
 
 
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -48,6 +49,7 @@ function displayBooks(){
         const remove = document.createElement("button");
 
         bookCard.classList.add("book-card");
+        bookTitle.classList.add("book-title")
         bookAuthor.classList.add("book-author");
         bookPages.classList.add("book-pages");
         bookRead.classList.add("book-read");
@@ -115,6 +117,6 @@ add.addEventListener("click",(e) =>{
 
 
 
-addBookToLibrary("harry porter", "shaban", "293", "yes");
-addBookToLibrary("harry porter", "shaban", "293", "no");
+addBookToLibrary("The Alchemist", "Paulo Coelho", "182", "yes");
+addBookToLibrary("Vagabonds", "Eloghosa Osunde", "278", "no");
 
