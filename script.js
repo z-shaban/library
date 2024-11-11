@@ -1,6 +1,7 @@
 const main = document.querySelector("main");
 const addNewButton = document.querySelector("#addNewButton");
 const addNewBookDialog = document.querySelector("#addNewBookDialog");
+const closeButton = document.querySelector("#close-button");
 const add = document.querySelector("#add");
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
@@ -44,7 +45,16 @@ function displayBooks(){
         const bookRead = document.createElement("div");
         const readText = document.createElement("span");
         const readButton = document.createElement("button");
-        const remove = document.createElement("button")
+        const remove = document.createElement("button");
+
+        bookCard.classList.add("book-card");
+        bookAuthor.classList.add("book-author");
+        bookPages.classList.add("book-pages");
+        bookRead.classList.add("book-read");
+        readText.classList.add("read-text");
+        readButton.classList.add("read-button");
+        remove.classList.add("remove");
+        
 
         bookCard.setAttribute("data-index", index);
 
@@ -80,10 +90,22 @@ addNewButton.addEventListener("click", () =>{
     addNewBookDialog.showModal();
 });
 
+closeButton.addEventListener("click", () =>{
+    addNewBookDialog.close();
+});
+
+
 add.addEventListener("click",(e) =>{
     e.preventDefault();
-    addNewBookDialog.close();
-    addBookToLibrary(title.value, author.value, pages.value, read.value);
+    
+    if (title.value == "" || author.value == "" || pages.value == "" || read.value == "") {
+        alert("Please fill in all required fields."); 
+    } else{
+        addBookToLibrary(title.value, author.value, pages.value, read.value);
+        addNewBookDialog.close();
+    }
+    
+    
 
     title.value = "";
     author.value = "";

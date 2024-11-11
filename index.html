@@ -9,23 +9,25 @@
 </head>
 <body>
     <header>
-        <h3>LIBRARY</h3>
+        <h3>WELCOME TO MY LIBRARY</h3>
         <button id="addNewButton">Add New Book</button>
         <dialog id="addNewBookDialog">
+            <button id="close-button">&times;</button>
             <h4>ADD NEW BOOK</h4>
             <form  action="">
-                <label for="title">TITLE: </label>
+                <label for="title">TITLE: </label><br>
                 <input type="text" id="title" name="title" required>
                 <br>
-                <label for="author">AUTHOR: </label>
+                <label for="author">AUTHOR: </label><br>
                 <input type="text" id="author" name="author" required>
                 <br>
-                <label for="pages">NUMBER OF PAGES: </label>
+                <label for="pages">NUMBER OF PAGES: </label><br>
                 <input type="text" id="pages" name="pages" required>
                 <br>
-                <label for="read">READ: </label>
-                <input type="text" id="read" name="read" placeholder="yes or no?">
-                <button id="add">ADD</button>
+                <label for="read">READ: </label><br>
+                <input type="text" id="read" name="read" placeholder="yes or no?" required>
+                <br>
+                <button type="submit" id="add">ADD</button>
             </form>
         </dialog>
     </header>
