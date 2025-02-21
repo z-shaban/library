@@ -77,3 +77,6 @@ main{
     background-color: rgb(195, 188, 124);
 }
 
+.error{
+    color: red;
+}

@@ -7,6 +7,7 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const read = document.querySelector("#read");
+const error = document.querySelectorAll(".error");
 
 
 
@@ -97,29 +98,57 @@ addNewButton.addEventListener("click", () =>{
 
 closeButton.addEventListener("click", () =>{
     addNewBookDialog.close();
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    read.value = "";
+    error.forEach(err => err.textContent = "");
 });
 
 
 add.addEventListener("click",(e) =>{
     e.preventDefault();
-    
-    if (title.value == "" || author.value == "" || pages.value == "" || read.value == "") {
-        alert("Please fill in all required fields."); 
-    } else{
-        addBookToLibrary(title.value, author.value, pages.value, read.value);
-        addNewBookDialog.close();
-    }
-    
-    
 
+    showError()
+    
+    if(title.validity.valid && author.validity.valid && pages.validity.valid && read.validity.valid){
+        addBookToLibrary(title.value, author.value, pages.value, read.value);
+        addNewBookDialog.close(); 
+        
     title.value = "";
     author.value = "";
     pages.value = "";
-    read.value = ""; 
+    read.value = "";
+    }
+
+ 
 });
 
-
+function showError(){
+      if(title.validity.valueMissing){
+            error[0].textContent = "title cant be empty"
+      } else {
+        error[0].textContent = ""; 
+    }
+      if(author.validity.valueMissing){
+        error[1].textContent ="author name cant be empty";
+      } else {
+        error[1].textContent = ""; // Clear error if valid
+    }
+      if(!pages.validity.valid){
+       error[2].textContent= "enter a number greater than 1"
+      } else {
+        error[2].textContent = ""; // Clear error if valid
+    }
+      
+      if(!read.validity.valid){
+       error[3].textContent = "select an option"
+      }else {
+        error[3].textContent = ""; // Clear error if valid
+    }
+    }
 
 addBookToLibrary("The Alchemist", "Paulo Coelho", "182", "yes");
 addBookToLibrary("Vagabonds", "Eloghosa Osunde", "278", "no");
+
 
